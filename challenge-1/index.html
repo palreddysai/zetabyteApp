@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge-1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-container">
+                <div class="card-img">
+                    <img src="./images/Capture.JPG" alt="image-1">
+                </div>
+                <div class="card-title">
+                    <h3>Top Winter Locations</h3>
+                    <small>More than 200 locations</small>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Cards provide context and an entry point to more robust information and views, and their
+                        content and quantity can vary greatly.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn">SHARE</button>
+                    <button id="modelbtn" class="btn">EXPLORE</button>
+                    <button class="fabtn fa fa-angle-down"></button>
+                </div>
+            </div>
+        </div>
+        <!-- second div -->
+        <div class="card">
+            <div class="card-container">
+                <div>
+                    <img src="./images/image-2.JPG" alt="image-1">
+                </div>
+                <div class="card-title">
+                    <h3>Top eastern road trips</h3>
+                    <small>2000 miles of wonder</small>
+                </div>
+                <div class="card-footer">
+                    <button class="btn">SHARE</button>
+                    <button id="modelbtn1" class="btn">EXPLORE</button>
+                    <button class="fabtn fa fa-angle-down"></button>
+                </div>
+            </div>
+        </div>
+        <!-- third div -->
+        <div class="card">
+            <div class="card-container">
+                <div class="avatar">
+                    <img src="./images/avatar.PNG" alt="avatar">
+                    <p>Cristy<br>
+                        <small>20 mins. ago</small>
+                    </p>
+
+                </div>
+                <div class="card-img">
+                    <img src="./images/image-3.JPG" alt="image-1">
+                </div>
+                <div class="card-title">
+                    <h3>Kangaroo Valley Safari</h3>
+                    <small>Free on Thursdays</small>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Cards provide context and an entry point to more robust information and views, and their
+                        content and quantity can vary greatly.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- fourth div -->
+        <div class="card">
+            <div class="card-container">
+                <div>
+                    <img src="./images/image-2.JPG" alt="image-1">
+                </div>
+                <div class="card-title">
+                    <h3>Top Winter Locations</h3>
+                    <small>More than 200 locations</small>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-icons">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="fabtn1 fa fa-bookmark"></i></a></li>
+                            <li><a href="#"><i class="fabtn1 fa fa-map-marker"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <button class="close">&times;</button>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptatibus, culpa velit nemo dolore modi
+                quidem repellendus eius hic vitae cupiditate eaque harum magnam inventore quasi nisi dolorum
+                exercitationem sunt.
+            </p>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("modelbtn");
+    var modelbtn = document.getElementById("modelbtn1");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    modelbtn1.onclick = function () {
+        modal.style.display = "block";
+    }
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</html>

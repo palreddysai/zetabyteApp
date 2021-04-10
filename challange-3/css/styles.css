@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #f7f7f7;
+}
+.container {
+  background-color: #fff;
+  width: 60%;
+  margin: 0 auto;
+  padding: 16px;
+}
+.user {
+  display: flex;
+}
+.avatar,
+.username,
+.share,
+.user-comment {
+  padding: 8px;
+}
+.username {
+  width: 100%;
+}
+.avatar img {
+  width: 50px;
+  height: 50px;
+}
+.username p span {
+  color: #17a2b8;
+}
+.icon {
+  float: right;
+  cursor: pointer;
+}
+.banner {
+  padding-top: 32px;
+}
+.banner img {
+  width: 100%;
+}
+.share button {
+  border: none;
+  background-color: transparent;
+  margin-right: 12px;
+}
+.share button i {
+  margin-right: 12px;
+}
+.comment {
+  background-color: #f7f7f7;
+  padding-left: 8px;
+  padding-top: 12px;
+  border-radius: 5px;
+}
+.user-comment {
+  display: flex;
+}
+.user-profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+.cmnt button {
+  color: #fff;
+  background-color: #238ae6;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+}
