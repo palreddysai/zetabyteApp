@@ -1,28 +1,33 @@
-<h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
+<h1 mat-dialog-title>Action :: <strong>{{action}}</strong></h1>
 <div mat-dialog-content>
-  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
-    <input placeholder="{{action}} Id" matInput [(ngModel)]="local_data.id">
-  </mat-form-field>
-  <mat-form-field *ngIf="action != 'Delete';">
-    <input placeholder="{{action}} Title" matInput [(ngModel)]="local_data.title" #title required>
-    <mat-error *ngIf="title?.invalid">
-      <div *ngIf="title.errors.required">title is required</div>
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field *ngIf="action != 'Delete'; ">
-    <input placeholder="{{action}} episodes" matInput [(ngModel)]="local_data.episodes">
-  </mat-form-field>
-  <mat-form-field *ngIf="action != 'Delete'; ">
-    <input placeholder="{{action}} infoUrl" matInput [(ngModel)]="local_data.infoUrl">
-  </mat-form-field>
-  <mat-form-field *ngIf="action != 'Delete'; ">
-    <input placeholder="{{action}} watchUrl" matInput [(ngModel)]="local_data.watchUrl">
-  </mat-form-field>
-  <ng-template #elseTemplate>
-    Sure to delete {{local_data.title}}
-  </ng-template>
+  <form #movieListForm="ngForm" class="example-form">
+    <mat-form-field *ngIf="action != 'Delete'; else elseTemplate" class="example-full-width">
+      <input placeholder="{{action}} Id" matInput [(ngModel)]="local_data.id" name="id">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete';" class="example-full-width">
+      <input placeholder="{{action}} Title" matInput [(ngModel)]="local_data.title" #title required name="title">
+      <mat-error *ngIf="title?.invalid">
+        <div *ngIf="title.errors.required">title is required</div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete';" class="example-full-width">
+      <input placeholder="{{action}} episodes" matInput [(ngModel)]="local_data.episodes" name="episodes" type="number">
+      <p matSuffix>episodes</p>
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete';" class="example-full-width">
+      <input placeholder="{{action}} infoUrl" matInput [(ngModel)]="local_data.infoUrl" name="infourl">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete';" class="example-full-width">
+      <input placeholder="{{action}} watchUrl" matInput [(ngModel)]="local_data.watchUrl" name="watchurl">
+    </mat-form-field>
+    <ng-template #elseTemplate>
+      Are you sure to delete {{local_data.title}} ?
+    </ng-template>
+  </form>
 </div>
+
 <div mat-dialog-actions>
-  <button mat-button (click)="doAction()">{{action}}</button>
-  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+  <button mat-button [disabled]="movieListForm.invalid" (click)="doAction()" mat-raised-button
+    color="primary">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-raised-button color="warn">Cancel</button>
 </div>
