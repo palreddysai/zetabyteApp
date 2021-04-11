@@ -1,15 +1,7 @@
+import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import { ModifyWatchListComponent } from './modify-watch-list/modify-watch-list.component';
-
-export interface watchListData {
-  title: string;
-  infoUrl: string;
-  episodes: number;
-  watchUrl: string;
-}
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
 import { ModifyWatchListComponent } from './modify-watch-list/modify-watch-list.component';
 
 export interface watchListData {
@@ -36,48 +28,56 @@ export class WatchListViewComponent implements OnInit {
   displayedColumns: string[] = ['id','title', 'episodes', 'infoUrl', 'watchUrl','action'];
   dataSource = ELEMENT_DATA;
 
-  constructor(public dialog: MatDialog) { }
-
-  ngOnInit(): void {
-  }
-
-  detailsDialog() {
-    const dialogRef = this.dialog.open(ModifyWatchListComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-}
-
-const ELEMENT_DATA: watchListData[] = [
-  {title:'Shingeki no Kyojin: The Final Season', episodes: 16, infoUrl: 'movie info', watchUrl: 'watch movie'},
-  {title:'Kimetsu no Yaiba Movie: Mugen Ressha-hen', episodes: 1, infoUrl: 'movie info', watchUrl: 'watch movie'},
-  {title:'Start-up', episodes: 16, infoUrl: 'movie info', watchUrl: 'watch movie'},
-
-];
-
-@Component({
-  selector: 'app-watch-list-view',
-  templateUrl: './watch-list-view.component.html',
-  styleUrls: ['./watch-list-view.component.css']
-})
-export class WatchListViewComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'episodes', 'infoUrl', 'watchUrl','action'];
-  dataSource = ELEMENT_DATA;
+  @ViewChild(MatTable,{static:true}) table: MatTable<any>;
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
-  detailsDialog() {
-    const dialogRef = this.dialog.open(ModifyWatchListComponent);
+  detailsDialog(action, obj) {
+    obj.action = action;
+    const dialogRef = this.dialog.open(ModifyWatchListComponent, {
+      width: '320px',
+      data:obj
+    });
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result.event == 'Add'){
+        this.addRowData(result.data);
+      }else if(result.event == 'update'){
+        this.updateRowData(result.data);
+      }else if(result.event == 'Delete'){
+        this.deleteRowData(result.data);
+      }
       console.log(`Dialog result: ${result}`);
     });
   }
+  addRowData(row_obj){
+    this.dataSource.push({
+      id:row_obj.id,
+      title:row_obj.title,
+      infoUrl:row_obj.infoUrl,
+      episodes:row_obj.episodes,
+      watchUrl:row_obj.watchUrl
+    });
+    this.table.renderRows();
 
+  }
+  updateRowData(row_obj){
+    this.dataSource = this.dataSource.filter((value,key)=>{
+      if(value.id == row_obj.id){
+        value.title = row_obj.title;
+       value.infoUrl = row_obj.infoUrl;
+     value.episodes = row_obj.episodes;
+      value.watchUrl = row_obj.watchUrl;
+      }
+      return true;
+    });
+  }
+  deleteRowData(row_obj){
+    this.dataSource = this.dataSource.filter((value,key)=>{
+      return value.id != row_obj.id;
+    });
+  }
 }

@@ -1,31 +1,28 @@
-<form class="example-form">
-    <h2 mat-dialog-title>Edit a movie</h2>
-    <mat-dialog-content>
-        <div>
-            <mat-form-field class="example-full-width">
-                <mat-label>Movie title</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field class="example-full-width">
-                <mat-label>Amount of episodes</mat-label>
-                <input type="number" matInput >
-            </mat-form-field>
-        </div>
-        <mat-form-field class="example-full-width">
-            <mat-label>Movie Information Url</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <div>
-            <mat-form-field class="example-full-width">
-                <mat-label>Movie watch Url</mat-label>
-                <input matInput>
-            </mat-form-field>
-        </div>
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-        <button mat-raised-button color="accent" mat-dialog-close>Cancel</button>
-        <button mat-raised-button disabled mat-raised-button color="primary" click="addList()">Submit</button>
-    </mat-dialog-actions>
-</form>
+<h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
+<div mat-dialog-content>
+  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+    <input placeholder="{{action}} Id" matInput [(ngModel)]="local_data.id">
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete';">
+    <input placeholder="{{action}} Title" matInput [(ngModel)]="local_data.title" #title required>
+    <mat-error *ngIf="title?.invalid">
+      <div *ngIf="title.errors.required">title is required</div>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete'; ">
+    <input placeholder="{{action}} episodes" matInput [(ngModel)]="local_data.episodes">
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete'; ">
+    <input placeholder="{{action}} infoUrl" matInput [(ngModel)]="local_data.infoUrl">
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete'; ">
+    <input placeholder="{{action}} watchUrl" matInput [(ngModel)]="local_data.watchUrl">
+  </mat-form-field>
+  <ng-template #elseTemplate>
+    Sure to delete {{local_data.title}}
+  </ng-template>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

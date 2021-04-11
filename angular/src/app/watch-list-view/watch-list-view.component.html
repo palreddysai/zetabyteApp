@@ -2,11 +2,11 @@
   <h2>My Movie Watch List</h2>
 </div>
 <div class=" addbtn">
-  <button mat-raised-button color="primary" (click)="detailsDialog()">Add Movie</button>
+  <button mat-raised-button color="primary" (click)="detailsDialog('Add',{})">Add Movie</button>
 </div>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> Episodes </th>
+    <th mat-header-cell *matHeaderCellDef> Id </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
   <!-- Title Column -->
@@ -38,10 +38,10 @@
     <th mat-header-cell *matHeaderCellDef> Action </th>
     <td mat-cell *matCellDef="let element">
       <a matTooltip="Edit">
-        <mat-icon color="accent" (click)="detailsDialog()">edit</mat-icon>
+        <mat-icon color="accent" (click)="detailsDialog('update',element)">edit</mat-icon>
       </a>&nbsp;&nbsp;
       <a matTooltip="Delete">
-        <mat-icon color="accent">delete</mat-icon>
+        <mat-icon color="accent" (click)="detailsDialog('Delete',element)">delete</mat-icon>
       </a>
     </td>
   </ng-container>

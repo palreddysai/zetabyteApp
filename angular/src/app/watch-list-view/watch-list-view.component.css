@@ -3,9 +3,6 @@ h2 {
   font-weight: Roboto, "Helvetica Neue", sans-serif;
   font-weight: 400;
 }
-a {
-  text-decoration: none;
-}
 .addbtn {
   width: 80%;
   margin: 0 auto;
@@ -13,13 +10,16 @@ a {
   justify-content: flex-end;
   padding: 6px 0;
 }
+
 table {
   width: 80%;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
 }
-
+a {
+  text-decoration: none;
+}
 .mat-raised-button {
   cursor: pointer;
 }
