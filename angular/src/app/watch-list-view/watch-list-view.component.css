@@ -3,6 +3,9 @@ h2 {
   font-weight: Roboto, "Helvetica Neue", sans-serif;
   font-weight: 400;
 }
+a {
+  text-decoration: none;
+}
 .addbtn {
   width: 80%;
   margin: 0 auto;
